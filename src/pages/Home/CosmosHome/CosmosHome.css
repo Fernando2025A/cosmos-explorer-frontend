@@ -1,0 +1,340 @@
+/* --- ENTORNO GLOBAL DE LA PÁGINA DE INICIO --- */
+.cosmos-content-wrapper {
+  background-color: #030308;
+  /* Fondo estrellado simulado mediante gradientes radiales repetidos */
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+  background-size: 550px 550px, 350px 350px;
+  background-position: 0 0, 40px 60px;
+  color: #ffffff;
+  min-height: 100vh;
+  padding-top: 100px; /* Evita que el Navbar fixed tape el contenido */
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- SECCIÓN HERO --- */
+.cosmos-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 5rem 2rem 5rem;
+  min-height: 55vh;
+  position: relative;
+}
+
+.hero-text-content {
+  max-width: 520px;
+  z-index: 10;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  letter-spacing: 0.4em;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-size: 4.2rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0.1rem 0;
+  /* Efecto de degradado futurista para el título */
+  background: linear-gradient(135deg, #ffffff 45%, #a855f7 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-underline {
+  width: 55px;
+  height: 3px;
+  background-color: #6366f1;
+  margin-bottom: 1.8rem;
+}
+
+.hero-description {
+  color: #8a8a93;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2.2rem;
+}
+
+.hero-cta-btn {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border: none;
+  color: #ffffff;
+  padding: 0.95rem 1.9rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+}
+
+/* Planeta Visual derecho */
+.hero-visual {
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 680px;
+  height: 680px;
+  pointer-events: none;
+}
+
+.giant-planet {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url('https://imgs.search.brave.com/5Aahe-RTF2UAC9ohHWEVJShGqUL1eB6qmYIaQV7cMK8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvOTc2/OTc5MzAwL2VzL2Zv/dG8vb3V0c3BhY2Ut/b3JiaXRhbC12aWV3/LW9uLWFsaWVuLXBs/YW5ldHMtYW5kLW1v/b25zLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1WSlI2dWsy/VWM5Rks0OFlBWlhy/Ml9GU2JsajBzbEZV/bE5lT2tsclNtUzZR/PQ') center/cover;
+  /* Sombras internas cruzadas para simular la atmósfera oscura y el brillo espacial */
+  box-shadow: 
+    inset -60px -60px 110px #000000,
+    inset 25px 25px 50px rgba(255, 255, 255, 0.12),
+    0 0 80px rgba(138, 85, 247, 0.12);
+}
+
+/* --- SECCIÓN ACCESOS RÁPIDOS --- */
+.cosmos-quick-access {
+  padding: 3rem 5rem;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-divider::before, .section-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.divider-text {
+  padding: 0 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  color: #6c6c75;
+  font-weight: 600;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.quick-card {
+  background: rgba(8, 8, 18, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quick-card:hover {
+  border-color: rgba(138, 85, 247, 0.35);
+  transform: translateY(-5px);
+  background: rgba(12, 12, 26, 0.65);
+}
+
+.card-image-wrapper {
+  height: 145px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Degradado oscuro sobre la imagen para suavizar la transición con el cuerpo de la tarjeta */
+.card-image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(transparent, rgba(8, 8, 18, 1));
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.65;
+  transition: transform 0.6s ease;
+}
+
+.quick-card:hover .card-img {
+  transform: scale(1.06);
+  opacity: 0.85;
+}
+
+.card-info {
+  padding: 1.2rem;
+  position: relative;
+}
+
+.card-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-header-title h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.card-info p {
+  color: #71717a;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  color: #6366f1;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.2s ease;
+}
+
+.quick-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- SECCIÓN PIE DE PÁGINA & MÉTRICAS --- */
+.cosmos-footer {
+  padding: 4rem 5rem 2rem 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  margin-top: 4rem;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  color: #6366f1;
+}
+
+.stat-box h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-box p {
+  font-size: 0.65rem;
+  color: #6c6c75;
+  letter-spacing: 0.1em;
+  margin: 3px 0 0 0;
+}
+
+.quote-box {
+  border-left: 2px solid #a855f7;
+  padding-left: 1.2rem;
+}
+
+.quote-text {
+  font-size: 0.85rem;
+  color: #a3a3ac;
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0 0 0.4rem 0;
+}
+
+.quote-author {
+  font-size: 0.75rem;
+  color: #6c6c75;
+}
+
+.footer-credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 2rem;
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+.social-icons span:hover {
+  color: #ffffff;
+}
+
+/* --- RESPONSIVE DE LA SECCIÓN CENTRAL --- */
+@media (max-width: 1080px) {
+  .cosmos-hero {
+    flex-direction: column;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  .title-underline { margin: 0 auto 1.5rem auto; }
+  .hero-cta-btn { margin: 0 auto; }
+  
+  .hero-visual {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 300px;
+    height: 300px;
+    margin-top: 4rem;
+  }
+  
+  .cosmos-quick-access, .cosmos-footer {
+    padding: 2rem 1.5rem;
+  }
+  
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-credits {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+}

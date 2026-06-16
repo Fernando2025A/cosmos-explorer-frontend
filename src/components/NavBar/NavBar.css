@@ -1,0 +1,129 @@
+/* Contenedor principal del Navbar */
+.cosmos-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background-color: rgba(6, 6, 14, 0.7); /* Fondo oscuro semi-transparente */
+  backdrop-filter: blur(10px); /* Efecto cristal esmerilado */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* --- SECCIÓN IZQUIERDA: AUTH --- */
+.nav-auth {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-btn-link {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0;
+}
+
+.nav-btn-link:hover {
+  color: #ffffff;
+}
+
+/* --- SECCIÓN CENTRAL: LOGO --- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  /* Centrado absoluto simulado mediante flex-spacing, o simplemente fluye en el flexbox */
+}
+
+@media(max-width: 1080px) {
+
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.2em;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 0.55rem;
+  color: #8a8a93;
+  margin-top: 2px;
+}
+
+/* --- SECCIÓN DERECHA: MENÚ --- */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+a.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #a3a3ac;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none !important;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+/* Estado Activo (Indicador inferior de la pestaña Inicio) */
+.nav-item.active {
+  color: #ffffff;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #a855f7); /* Subrayado degradado neon */
+  border-radius: 2px;
+}
+
+.nav-menu a, 
+.nav-menu .nav-item,
+.cosmos-navbar a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Nos aseguramos de que al pasar el cursor (hover) tampoco aparezca */
+.nav-menu a:hover, 
+.nav-menu .nav-item:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}

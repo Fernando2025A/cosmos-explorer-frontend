@@ -1,0 +1,22 @@
+.home-container{
+  background-color: rgba(87, 87, 87, 0);
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+.content-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  background: linear-gradient( rgb(14, 14, 14), rgba(255, 255, 255, 0.199));
+  padding: 20px 20px 20px 20px;
+  border-radius: 8px;
+}
+.content-container h1 {
+  color: white;
+}
+.content-container label {
+  color: bisque;
+  font-size: 21px;
+}
