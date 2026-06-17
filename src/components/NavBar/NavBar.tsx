@@ -1,12 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
-  UserPlus,
-  LogIn,
   Compass,
-  Telescope,
   BookOpen,
   Home,
+  BookCheck,
 } from "lucide-react";
 import "./Navbar.css";
 
@@ -58,6 +56,18 @@ export const Navbar: React.FC = () => {
         <li>
           <NavLink
             style={{ textDecoration: "none" }}
+            to="/guide"
+            className={({ isActive }) =>
+              isActive ? "nav-item active" : "nav-item"
+            }
+          >
+            <BookCheck size={18}/>
+            <span>Guía de app</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            style={{ textDecoration: "none" }}
             to="/explorer"
             className={({ isActive }) =>
               isActive ? "nav-item active" : "nav-item"
@@ -65,18 +75,6 @@ export const Navbar: React.FC = () => {
           >
             <Compass size={16} />
             <span>Explorar</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to="/discoveries"
-            className={({ isActive }) =>
-              isActive ? "nav-item active" : "nav-item"
-            }
-          >
-            <Telescope size={16} />
-            <span>Descubrimientos</span>
           </NavLink>
         </li>
         <li>

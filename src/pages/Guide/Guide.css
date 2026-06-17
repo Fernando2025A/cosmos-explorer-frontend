@@ -1,0 +1,321 @@
+/* --- BASE DEL CONTENEDOR --- */
+.dashboard-page-container {
+  background-color: #030308;
+  min-height: 100vh;
+  padding: 60px 4rem;
+  box-sizing: border-box;
+  margin-top: 50px;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.dashboard-max-width {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* --- ENCABEZADO / HERO --- */
+.dashboard-hero-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.title-sparkle {
+  color: #a855f7;
+}
+
+.dashboard-hero-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.gradient-purple-text {
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-lead-paragraph {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Imagen decorativa de la galaxia */
+.hero-visual-side {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.floating-galaxy-graphic {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%),
+              url('https://imgs.search.brave.com/EGqgLBnPGBcSEfmrI1_UueWqfnV6mqb7l8Ox9cd2mAY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9wYWlz/YWplLWRlLWxhLW5v/Y2hlLWdhbGF4aWEt/diVDMyVBRGEtbCVD/MyVBMWN0ZWEtMTI5/MDgyMjk1LmpwZw') center/cover;
+  border-radius: 50%;
+  position: absolute;
+  top: -60px;
+  right: -20px;
+  transform: rotate(-20deg) scaleX(1.4);
+  filter: opacity(0.75) contrast(1.1);
+}
+
+/* --- LISTADO DE FILAS (SECCIONES) --- */
+.section-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.section-subtitle-row h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rows-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Estilos individuales del componente modular FeatureRow */
+.dashboard-feature-row {
+  background-color: rgba(11, 11, 23, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: 160px 1fr 220px;
+  gap: 2rem;
+  align-items: center;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.dashboard-feature-row:hover {
+  border-color: rgba(255, 255, 255, 0.06);
+  background-color: rgba(14, 14, 30, 0.55);
+}
+
+.feature-image-box {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.feature-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-icon-purple {
+  color: #a855f7;
+  display: flex;
+  align-items: center;
+}
+
+.feature-title-wrapper h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.feature-description {
+  color: #71717a;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Columna de Viñetas (Bullets) */
+.feature-bullets-side {
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+  padding-left: 1.5rem;
+}
+
+.feature-bullets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feature-bullets-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bullet-purple-dash {
+  color: #8b5cf6;
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+.bullet-text {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+}
+
+
+/* --- FOOTER / CTA ACCIÓN --- */
+.dashboard-footer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.cta-banner-box {
+  background-color: rgba(14, 11, 26, 0.5);
+  border: 1px solid rgba(147, 51, 234, 0.15);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cta-left-content {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.cta-icon-box {
+  background-color: rgba(147, 51, 234, 0.15);
+  color: #c084fc;
+  padding: 0.6rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.cta-text-block h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.cta-text-block p {
+  font-size: 0.8rem;
+  color: #71717a;
+  margin: 0;
+}
+
+.cta-action-btn {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.cta-action-btn:hover {
+  background-color: rgba(147, 51, 234, 0.1);
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.rotated-rocket {
+  transform: rotate(45deg);
+}
+
+/* Cita de Cierre */
+.quote-container-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.quote-phrase {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #52525b;
+  margin: 0;
+}
+
+.quote-author {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #a855f7;
+}
+
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+  .dashboard-page-container { padding: 30px 1.5rem; }
+  .dashboard-hero-header { grid-template-columns: 1fr; text-align: center; }
+  .hero-title-row { justify-content: center; }
+  .floating-galaxy-graphic { display: none; }
+  
+  .dashboard-feature-row {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    text-align: center;
+  }
+  .feature-title-wrapper { justify-content: center; }
+  .feature-bullets-side { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-left: 0; padding-top: 1rem; }
+  .feature-bullets-list { align-items: center; }
+  
+  .cta-banner-box { flex-direction: column; text-align: center; padding: 1.5rem; }
+  .cta-left-content { flex-direction: column; }
+}
+/* 1. Estado inicial de los elementos que se van a animar */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px); /* Empieza 40px más abajo */
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity; /* Optimiza el rendimiento del navegador */
+}
+
+/* 2. Clase que activa la animación cuando entra en pantalla */
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0); /* Sube a su posición original */
+}
+
+/* Opcional: Si quieres un efecto escalonado (staggered) en listas */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }

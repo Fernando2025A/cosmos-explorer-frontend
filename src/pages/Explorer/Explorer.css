@@ -1,0 +1,387 @@
+/* --- CONTENEDOR MAESTRO DE LA SECCIÓN EXPLORAR --- */
+.explorer-layout-container {
+  background-color: #030308;
+  min-height: 100vh;
+  padding: 40px 5rem 120px 5rem; /* El padding-bottom le da aire para que no se tape con el menú inferior */
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+}
+
+.explorer-main-content {
+  display: flex;
+  gap: 2rem;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* --- COLUMNA DE PUBLICACIONES (FEED) --- */
+.explorer-feed-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Estilos de las Tarjetas Reutilizables de Publicación */
+.explorer-post-card {
+  background-color: rgba(11, 11, 23, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.explorer-post-card:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(14, 14, 30, 0.5);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.post-user-info {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.post-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #27272a;
+}
+
+.post-user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-display-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.user-handle {
+  font-size: 0.8rem;
+  color: #696974;
+}
+
+.user-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.post-time {
+  font-size: 0.75rem;
+  color: #696974;
+}
+
+/* Distintivos (Badges) de rango de usuarios */
+.post-badge {
+  font-size: 0.65rem;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.post-badge.novato {
+  background-color: rgba(147, 51, 234, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(147, 51, 234, 0.3);
+}
+
+.post-badge.explorador {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.post-more-btn {
+  background: none;
+  border: none;
+  color: #52525b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.post-more-btn:hover { color: #ffffff; }
+
+/* Cuerpo del Post */
+.post-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e4e4e7;
+  margin: 0 0 1rem 0;
+}
+
+.post-image-container {
+  width: 100%;
+  max-height: 380px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.post-content-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botonera de interacciones del Post */
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.post-actions-left {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.post-action-btn {
+  background: none;
+  border: none;
+  color: #71717a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.post-action-btn:hover { color: #ffffff; }
+.post-action-btn.action-heart:hover { color: #ef4444; }
+.post-action-btn.action-bookmark:hover { color: #f59e0b; }
+
+
+/* --- COLUMNA DERECHA: SIDEBAR --- */
+.explorer-sidebar-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 360px;
+}
+
+.sidebar-widget {
+  background-color: rgba(11, 11, 23, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.widget-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.purple-icon { color: #a855f7; }
+
+.widget-title-row h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Módulo de Tendencias */
+.trends-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.trend-rank-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.trend-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #52525b;
+  width: 15px;
+}
+
+.trend-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trend-tag {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  cursor: pointer;
+}
+
+.trend-tag:hover { color: #a855f7; }
+
+.trend-count {
+  font-size: 0.75rem;
+  color: #696974;
+}
+
+/* Módulo de Imagen del Día (POD) */
+.pod-image-wrapper {
+  width: 100%;
+  height: 160px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.pod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pod-info h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+}
+
+.pod-desc {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  margin: 0 0 2px 0;
+}
+
+.pod-credits {
+  font-size: 0.7rem;
+  color: #52525b;
+  margin: 0;
+}
+
+/* Botón común de pie de Widget */
+.widget-see-more-btn {
+  background: none;
+  border: none;
+  color: #8b5cf6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
+}
+
+.widget-see-more-btn:hover { color: #c084fc; }
+
+
+/* ==========================================================================
+   --- MENÚ DE NAVEGACIÓN INFERIOR DE PESTAÑAS (FOOTER TABS) ---
+   ========================================================================== */
+.explorer-bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(6, 6, 14, 0.85);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 0;
+  z-index: 999;
+}
+
+.bottom-tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bottom-tab-btn {
+  background: none;
+  border: none;
+  color: #71717a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 16px;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.bottom-tab-btn:hover,
+.bottom-tab-btn.active {
+  color: #ffffff;
+}
+
+/* Barra Neón Decorativa en la Pestaña Activa inferior */
+.bottom-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  border-radius: 4px 4px 0 0;
+}
+
+
+/* ==========================================================================
+   --- RESPONSIVE DESIGN ---
+   ========================================================================== */
+@media (max-width: 992px) {
+  .explorer-layout-container {
+    padding: 20px 1.5rem 100px 1.5rem;
+  }
+  
+  .explorer-main-content {
+    flex-direction: column;
+  }
+  
+  .explorer-sidebar-column {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .bottom-tabs-container {
+    gap: 2rem;
+  }
+}

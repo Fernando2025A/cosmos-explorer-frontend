@@ -3,6 +3,7 @@ import {
   Rocket, Star, Orbit, Eclipse, Zap, Disc, Radio, Eye, Milestone 
 } from 'lucide-react';
 import './CosmosHome.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const CosmosHome: React.FC = () => {
   // Datos de las 6 tarjetas de la sección accesos rápidos
@@ -14,7 +15,10 @@ export const CosmosHome: React.FC = () => {
     { id: 5, title: 'AGUJEROS NEGROS', desc: 'Explora los misterios de los agujeros negros.', icon: <Disc size={18} />, img: 'https://imgs.search.brave.com/9ZKD9iryyHN51LRgmymG0fF8LkdBOCZg3DtKdc1ggGY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ1/NjM0NjQ3NC9lcy9m/b3RvL2FndWplcm8t/bmVncm8teS11bi1k/aXNjby1kZS1wbGFz/bWEtYnJpbGxhbnRl/LXJlbmRlcml6YWRv/LTNkLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1LMmFfcjBO/dklJUGJ4OGlwRHRi/TXdHZ0RFSUZ2aEFa/Sy1QVjc1YTlPWjNF/PQ' },
     { id: 6, title: 'MISIONES', desc: 'Sigue misiones espaciales actuales y pasadas.', icon: <Radio size={18} />, img: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=600&q=80' },
   ];
-
+  const navigate = useNavigate()
+  const getGuide = () => {
+    navigate('/guide')
+  }
   return (
     <div className="cosmos-content-wrapper">
       
@@ -27,9 +31,10 @@ export const CosmosHome: React.FC = () => {
           <p className="hero-description">
             Descubre los misterios del universo. Desde las estrellas más lejanas hasta los planetas más cercanos. El cosmos te espera.
           </p>
-          <button className="hero-cta-btn">
+          <button className="hero-cta-btn" onClick={getGuide}>
             <Rocket size={16} />
             <span>COMENZAR EXPLORACIÓN</span>
+            <Link to='/guide'></Link>
           </button>
         </div>
         
