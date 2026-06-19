@@ -1,22 +1,46 @@
 import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, Rocket, LogIn } from 'lucide-react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [btnState, setBtnState] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
+  const googleLogin = () => {
+    window.location.href = 'http://localhost:3000/auth/google';
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Iniciando sesión con:', formData);
+    setBtnState(true);
+    const res = await fetch(`${apiUrl}/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        identifier: formData.email,
+        password: formData.password
+      })
+    })
+    if (res.ok) {
+      navigate('../home');
+      return;
+    }
+    alert("error al iniciar sesión");
+    setBtnState(false);
   };
 
   return (
@@ -46,9 +70,9 @@ const Login: React.FC = () => {
           <div className="input-group">
             <Mail className="input-icon" size={20} />
             <input
-              type="email"
+              type="text"
               name="email"
-              placeholder="Email"
+              placeholder="Email o usuario"
               value={formData.email}
               onChange={handleChange}
               required
@@ -78,10 +102,11 @@ const Login: React.FC = () => {
             <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
           </div>
 
-          <button type="submit" className="btn-submit">
+          <button disabled={btnState} type="submit" className="btn-submit">
             <LogIn size={18} />
             INICIAR SESIÓN
           </button>
+         
         </form>
 
         {/* Separador */}
@@ -90,7 +115,7 @@ const Login: React.FC = () => {
         </div>
 
         {/* Botón de Google */}
-        <button className="btn-google">
+        <button className="btn-google" onClick={googleLogin}>
           <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20">
             <path
               fill="#EA4335"
@@ -115,6 +140,9 @@ const Login: React.FC = () => {
         {/* Footer */}
         <div className="card-footer">
           ¿No tienes cuenta? <a href="/register">Regístrate aquí &gt;</a>
+          <p>
+            Al continuar, aceptas nuestros <a href="/terms">Términos de servicio</a> y <a href="/privacy">Política de privacidad</a>.   
+          </p>
         </div>
       </div>
     </div>

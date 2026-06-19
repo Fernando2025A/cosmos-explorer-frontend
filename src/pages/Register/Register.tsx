@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { User, Mail, Lock, Eye, EyeOff, Rocket } from 'lucide-react';
-import './Register.css';
+import React, { useState } from "react";
+import { User, Mail, Lock, Eye, EyeOff, Rocket } from "lucide-react";
+import "./Register.css";
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,17 +19,43 @@ const Register: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const googleLogin = () => {
+    window.location.href = "http://localhost:3000/auth/google";
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí manejas la lógica de registro
-    console.log('Datos enviados:', formData);
+    const res = await fetch(`${apiUrl}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+      }),
+    });
+    if (res.ok) {
+      const loginRes = await fetch(`${apiUrl}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          identifier: formData.email,
+          password: formData.password,
+        }),
+      });
+      if (loginRes.ok) {
+        window.location.href = "/home";
+      } else {
+        alert("Error al iniciar sesión después del registro");
+      }
+    }
   };
 
   return (
     <div className="register-container">
       {/* Fondo de planetas/espacio simulado */}
       <div className="background-planet"></div>
-      
+
       <div className="register-card">
         {/* Logo */}
         <div className="logo-container">
@@ -41,7 +68,8 @@ const Register: React.FC = () => {
           <p className="subtitle-top">CREA TU CUENTA</p>
           <h1 className="main-title">REGÍSTRATE</h1>
           <p className="description">
-            Únete a UniSite y comienza tu viaje por el universo.<br />
+            Únete a UniSite y comienza tu viaje por el universo.
+            <br />
             Crea tu cuenta para guardar tus exploraciones y mucho más.
           </p>
         </div>
@@ -75,7 +103,7 @@ const Register: React.FC = () => {
           <div className="input-group">
             <Lock className="input-icon" size={20} />
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Contraseña"
               value={formData.password}
@@ -94,7 +122,7 @@ const Register: React.FC = () => {
           <div className="input-group">
             <Lock className="input-icon" size={20} />
             <input
-              type={showConfirmPassword ? 'text' : 'password'}
+              type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               placeholder="Confirmar contraseña"
               value={formData.confirmPassword}
@@ -122,8 +150,13 @@ const Register: React.FC = () => {
         </div>
 
         {/* Botón de Google */}
-        <button className="btn-google">
-          <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20">
+        <button className="btn-google" onClick={googleLogin}>
+          <svg
+            className="google-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+          >
             <path
               fill="#EA4335"
               d="M12 5.04c1.62 0 3.08.56 4.22 1.65l3.17-3.17C17.47 1.65 14.95 1 12 1 7.35 1 3.39 3.67 1.41 7.56l3.77 2.92c.89-2.67 3.39-4.44 6.82-4.44z"

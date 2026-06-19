@@ -7,6 +7,8 @@ import { Learn } from './pages/Learn/Learn'
 import { News } from './pages/News/News'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import { Profile } from './pages/Profile/Profile'
+import { ProtectedRoute } from './components/ProtectedRoute'
 function App() {
   return (
     <Routes>
@@ -17,6 +19,7 @@ function App() {
       <Route path="/news" element={<News />}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/login" element={<Login />}/>
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
     </Routes>
   )
 }

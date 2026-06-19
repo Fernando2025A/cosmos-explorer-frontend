@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/useAuth";
 import {
   Compass,
   BookOpen,
@@ -10,10 +11,15 @@ import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const { user, isLoading } = useAuth();
+  const authenticated = Boolean(user);
 
   const setNavigate = (path: string) => {
     navigate(path);
   }
+
+  // Now the navbar relies on the global AuthProvider via `useAuth()`
+
   return (
     <nav className="cosmos-navbar">
       {/* Sección Central: Logo */}
@@ -117,23 +123,39 @@ export const Navbar: React.FC = () => {
           </NavLink>
         </li>
       </ul>
-      {/* Sección Izquierda: Autenticación */}
-      <div className="nav-auth">
-        <button onClick={() => setNavigate('/login')} className="nav-btn-link">
-          <span>Iniciar sesión</span>
-        </button>
-        <button
-          style={{
-            border: "1px solid rgba(67, 0, 175, 0.51)",
-            padding: "8px 8px 8px 8px",
-            borderRadius: "2px",
-          }}
-          onClick={() => setNavigate('/register')}
-          className="nav-btn-link"
-        >
-          <span>Registrarse</span>
-        </button>
-      </div>
+
+      {/* 3. Sección Izquierda: Autenticación con renderizado condicional */}
+      {isLoading ? (
+        // Mientras carga, puedes dejar un espacio en blanco para que el diseño no salte, o poner un spinner
+        <div className="nav-auth" style={{ opacity: 0.5 }}>
+          <span>Cargando...</span>
+        </div>
+      ) : authenticated ? (
+        // Si YA cargó y ESTÁ autenticado
+        <div className="nav-auth">
+          <button onClick={() => setNavigate('/profile')} className="nav-btn-link">
+            <span>Perfil</span>
+          </button>
+        </div>
+      ) : (
+        // Si YA cargó y NO está autenticado
+        <div className="nav-auth">
+          <button onClick={() => setNavigate('/login')} className="nav-btn-link">
+            <span>Iniciar sesión</span>
+          </button>
+          <button
+            style={{
+              border: "1px solid rgba(67, 0, 175, 0.51)",
+              padding: "8px 8px 8px 8px",
+              borderRadius: "2px",
+            }}
+            onClick={() => setNavigate('/register')}
+            className="nav-btn-link"
+          >
+            <span>Registrarse</span>
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
