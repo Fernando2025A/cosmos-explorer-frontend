@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Compass,
   BookOpen,
@@ -9,6 +9,11 @@ import {
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+
+  const setNavigate = (path: string) => {
+    navigate(path);
+  }
   return (
     <nav className="cosmos-navbar">
       {/* Sección Central: Logo */}
@@ -33,7 +38,7 @@ export const Navbar: React.FC = () => {
           </svg>
         </div>
         <div className="logo-text">
-          <span className="brand-name">COSMOS</span>
+          <span className="brand-name">UniSite</span>
           <span className="brand-sub">EXPLORA EL UNIVERSO</span>
         </div>
       </div>
@@ -114,7 +119,7 @@ export const Navbar: React.FC = () => {
       </ul>
       {/* Sección Izquierda: Autenticación */}
       <div className="nav-auth">
-        <button className="nav-btn-link">
+        <button onClick={() => setNavigate('/login')} className="nav-btn-link">
           <span>Iniciar sesión</span>
         </button>
         <button
@@ -123,6 +128,7 @@ export const Navbar: React.FC = () => {
             padding: "8px 8px 8px 8px",
             borderRadius: "2px",
           }}
+          onClick={() => setNavigate('/register')}
           className="nav-btn-link"
         >
           <span>Registrarse</span>
