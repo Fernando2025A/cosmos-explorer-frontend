@@ -13,7 +13,7 @@ export const ProtectedRoute: React.FC<Props> = ({ children }) => {
   if (isLoading) return null;
 
   // Si no hay usuario, redirigimos al login
-  if (!user) return <Navigate to="/login" replace />;
+  if (!user) return <Navigate to="/home" replace />;
 
   // Usuario autenticado: renderizamos el contenido protegido
   return children;

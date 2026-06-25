@@ -1,0 +1,88 @@
+.search-card-container {
+  display: flex;
+  flex-direction: column;
+  background: rgba(36, 36, 36, 0.85);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.search-card-container img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.search-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.search-card-header h5 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.search-card-subtitle {
+  margin: 0;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+}
+
+.search-card-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.search-card-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.search-card-fact-label {
+  color: #d4d4d8;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.search-card-fact-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.search-card-description {
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  margin: 0 0 18px 0;
+  line-height: 1.5;
+}
+
+.search-card-container button {
+  align-self: flex-start;
+  background-color: #7c3aed;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-card-container button:hover {
+  background-color: #8b5cf6;
+}

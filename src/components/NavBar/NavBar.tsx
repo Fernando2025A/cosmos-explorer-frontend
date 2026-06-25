@@ -1,4 +1,6 @@
-import React from "react";
+
+//Navbar.tsx
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 import {
@@ -7,9 +9,10 @@ import {
   Home,
   BookCheck,
 } from "lucide-react";
-import "./Navbar.css";
+import "./NavBar.css";
 
 export const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { user, isLoading } = useAuth();
   const authenticated = Boolean(user);
@@ -18,7 +21,6 @@ export const Navbar: React.FC = () => {
     navigate(path);
   }
 
-  // Now the navbar relies on the global AuthProvider via `useAuth()`
 
   return (
     <nav className="cosmos-navbar">
@@ -49,7 +51,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Sección Derecha: Navegación utilizando NavLink */}
+      {/* Sección Derecha: Navegación utilizando NavLink (escritorio) */}
       <ul className="nav-menu">
         <li>
           <NavLink
@@ -123,6 +125,120 @@ export const Navbar: React.FC = () => {
           </NavLink>
         </li>
       </ul>
+
+      {/* Botón toggle para móvil */}
+      <button
+        className="nav-toggle"
+        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span className="burger" />
+      </button>
+
+      {/* Menú móvil desplegable (aparece en pantallas pequeñas) */}
+      <div className={`mobile-dropdown ${menuOpen ? "open" : ""}`}>
+        <ul className="nav-menu mobile">
+          <li>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/home"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+              end
+              onClick={() => setMenuOpen(false)}
+            >
+              <Home size={16} />
+              <span>Inicio</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/guide"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              <BookCheck size={18} />
+              <span>Guía de app</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/explorer"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              <Compass size={16} />
+              <span>Explorar</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/learn"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              <BookOpen size={16} />
+              <span>Aprender</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/news"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+              >
+                <path d="M4 4h16v16H4z" />
+                <path d="M16 8h-4M16 12H8M16 16H8" />
+              </svg>
+              <span>Noticias</span>
+            </NavLink>
+          </li>
+        </ul>
+
+        <div className="mobile-auth">
+          {isLoading ? (
+            <div style={{ opacity: 0.7, padding: "8px 16px" }}>Cargando...</div>
+          ) : authenticated ? (
+            <button onClick={() => { setNavigate('/profile'); setMenuOpen(false); }} className="nav-btn-link">
+              <span>Perfil</span>
+            </button>
+          ) : (
+            <div style={{ display: 'flex', gap: '8px', padding: '8px 12px' }}>
+              <button onClick={() => { setNavigate('/login'); setMenuOpen(false); }} className="nav-btn-link">
+                <span>Iniciar sesión</span>
+              </button>
+              <button
+                style={{ border: "1px solid rgba(67, 0, 175, 0.51)", padding: "8px 8px", borderRadius: "2px" }}
+                onClick={() => { setNavigate('/register'); setMenuOpen(false); }}
+                className="nav-btn-link"
+              >
+                <span>Registrarse</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* 3. Sección Izquierda: Autenticación con renderizado condicional */}
       {isLoading ? (

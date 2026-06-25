@@ -6,8 +6,29 @@
   color: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   box-sizing: border-box;
+  margin-top: 50px;
 }
 
+.cards-container{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+}
+
+.search-error-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 26px;
+  text-align: center;
+  color: #f8fafc;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
 .learn-max-container {
   max-width: 1250px;
   margin: 0 auto;
@@ -96,6 +117,16 @@
 }
 
 .learn-search-submit-btn:hover { background-color: #7c3aed; }
+
+.search-message {
+  color: #d4d4d8;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.search-error {
+  color: #f87171;
+}
 
 
 /* --- 2. HERO / BLOQUE DE TRABAJO DESTACADO --- */
@@ -345,7 +376,7 @@
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 992px) {
-  .learn-page-layout { padding: 30px 1.5rem; }
+  .learn-page-layout { padding: 30px 1.5rem; margin-top: 100px; }
   .learn-header-block { flex-direction: column; align-items: flex-start; }
   .learn-search-form { min-width: 100%; }
   .hero-split-grid { grid-template-columns: 1fr; }

@@ -4,8 +4,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2.5rem;
-  background-color: rgba(6, 6, 14, 0.7); /* Fondo oscuro semi-transparente */
-  backdrop-filter: blur(10px); /* Efecto cristal esmerilado */
+  background-color: rgba(0, 0, 0, 0.7); /*Fondo oscuro semi-transparente */
+  backdrop-filter: blur(10px); /* Efecto cristal esmerilado */    
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -49,13 +49,14 @@
   /* Centrado absoluto simulado mediante flex-spacing, o simplemente fluye en el flexbox */
 }
 
-@media(max-width: 1080px) {
-
-}
 .logo-text {
   display: flex;
   flex-direction: column;
   letter-spacing: 0.2em;
+}
+
+.logo-text:hover{
+  cursor: default;
 }
 
 .brand-name {
@@ -126,4 +127,71 @@ a.nav-item {
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
+}
+/* Estilos responsivos: en pantallas pequeñas mostramos un toggle y un dropdown */
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle .burger {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+}
+.nav-toggle .burger::before,
+.nav-toggle .burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+}
+.nav-toggle .burger::before { top: -6px; }
+.nav-toggle .burger::after { top: 6px; }
+
+.mobile-dropdown {
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: calc(100% + 8px);
+  background: rgba(10,10,10,0.98);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  min-width: 200px;
+  z-index: 1100;
+  overflow: hidden;
+}
+.mobile-dropdown.open { display: block; }
+
+.mobile-dropdown .nav-menu.mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 0;
+}
+.mobile-dropdown .nav-menu.mobile li { list-style: none; }
+.mobile-dropdown .nav-item {
+  padding: 10px 16px;
+  color: #d1d1d6;
+}
+.mobile-dropdown .nav-item:hover { background: rgba(255,255,255,0.03); color: #fff; }
+
+.mobile-auth { padding: 8px 12px 12px 12px; border-top: 1px solid rgba(255,255,255,0.02); }
+
+@media (max-width: 768px) {
+  .nav-menu { display: none; }
+  .nav-auth { display: none; }
+  .nav-toggle { display: flex; }
 }

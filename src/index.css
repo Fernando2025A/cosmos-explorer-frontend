@@ -14,7 +14,7 @@ input {
 }
 button {
   border-radius: 8px;
-  background: linear-gradient(rgb(44, 44, 44), rgb(0, 0, 0));
+  background: linear-gradient(90deg, rgb(76, 0, 255), rgb(111, 0, 255));
   font-weight: 620;
   font-size: 16px;
   color: white;

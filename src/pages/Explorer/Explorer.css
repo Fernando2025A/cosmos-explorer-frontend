@@ -370,6 +370,7 @@
 @media (max-width: 992px) {
   .explorer-layout-container {
     padding: 20px 1.5rem 100px 1.5rem;
+    margin-top: 60px;
   }
   
   .explorer-main-content {

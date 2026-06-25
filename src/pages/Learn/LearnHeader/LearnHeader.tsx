@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 
-export const LearnHeader: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+type LearnHeaderProps = {
+  onSearch: (query: string) => Promise<void>;
+};
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
+export const LearnHeader: React.FC<LearnHeaderProps> = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSearchSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Buscando en la base de datos galáctica:", searchQuery);
+    await onSearch(searchQuery);
   };
 
   return (
@@ -23,7 +26,7 @@ export const LearnHeader: React.FC = () => {
           <Search size={18} className="search-icon-inside" />
           <input 
             type="text" 
-            placeholder="Buscar temas, objetos, conceptos..." 
+            placeholder="Buscar temas, objetos, conceptos..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="learn-search-input"

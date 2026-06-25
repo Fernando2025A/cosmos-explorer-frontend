@@ -161,6 +161,7 @@
 @media (max-width: 768px) {
   .news-layout-container {
     padding: 40px 1.5rem;
+    margin-top: 60px;
   }
   
   .news-section-header {
