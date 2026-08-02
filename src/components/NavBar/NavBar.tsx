@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
           <li>
             <NavLink
               style={{ textDecoration: "none" }}
-              to="/home"
+              to="/"
               className={({ isActive }) =>
                 isActive ? "nav-item active" : "nav-item"
               }
