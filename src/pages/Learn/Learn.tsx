@@ -95,7 +95,7 @@ export const Learn: React.FC = () => {
     };
   };
 
-  const handleSearch = async (searchQuery: string) => {
+  const handleSearch = async (searchQuery: string, searchType: string) => {
     if (!searchQuery.trim()) {
       setSearchError('Ingresa un término de búsqueda válido.');
       setNoResultsQuery(null);
@@ -109,7 +109,7 @@ export const Learn: React.FC = () => {
     setSearchResult(null);
 
     try {
-      const response = await fetch(`${apiUrl}/planets/${encodeURIComponent(searchQuery)}`, {
+      const response = await fetch(`${apiUrl}/planets/${encodeURIComponent(searchQuery)}?type=${encodeURIComponent(searchType)}`, {
         credentials: 'include',
       });
 

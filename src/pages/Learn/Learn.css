@@ -118,6 +118,43 @@
 
 .learn-search-submit-btn:hover { background-color: #7c3aed; }
 
+.search-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-type-select {
+  background: rgba(15, 15, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #e5e7eb;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  appearance: none;
+  outline: none;
+  min-width: 170px;
+}
+
+.search-type-select:hover,
+.search-type-select:focus {
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+.search-type-select option {
+  background: #090a12;
+  color: #f8fafc;
+}
+
+.learn-search-form {
+  display: flex;
+  gap: 0.7rem;
+  min-width: 460px;
+  align-items: center;
+}
+
 .search-message {
   color: #d4d4d8;
   font-size: 0.9rem;

@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 import './CosmosHome.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
 
 export const CosmosHome: React.FC = () => {
   // Datos de las 6 tarjetas de la sección accesos rápidos
@@ -110,11 +111,12 @@ export const CosmosHome: React.FC = () => {
         </div>
 
         <div className="footer-credits">
-          <span>© 2026 COSMOS. Todos los derechos reservados.</span>
+          <span>© 2026 UniSite. Todos los derechos reservados.</span>
           <div className="social-icons">
-            <span>𝕏</span>
-            <span>Instagram</span>
-            <span>YouTube</span>
+            <span>
+              <FaGithub size={18}/>
+              GitHub
+            </span>
           </div>
         </div>
       </footer>

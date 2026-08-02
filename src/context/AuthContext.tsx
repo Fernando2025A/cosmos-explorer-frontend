@@ -101,6 +101,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = async() => {
     setUser(null);
     const res = await fetch(`${apiUrl}/auth/logout`, {
+      method: 'POST',
       credentials: 'include',
     });
     if (!res.ok) {
