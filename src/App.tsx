@@ -12,7 +12,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 function App() {
   return (
     <Routes>
-      <Route path="/home" element={<Home />}/>
+      <Route path="/" element={<Home />}/>
       <Route path="/explorer" element={<Explorer />}/>
       <Route path="/guide" element={<Guide />}/>
       <Route path="/learn" element={<Learn />}/>
